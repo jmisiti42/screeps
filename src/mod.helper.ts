@@ -1,5 +1,11 @@
 import { SelfCreeps } from "./types/selfCreeps";
 
+interface CreepMemory {
+  memory: {
+    role: string
+  }
+}
+
 export const memoryClean = () => {
   for(const name in Memory.creeps) {
     if(!Game.creeps[name]) {
@@ -9,14 +15,13 @@ export const memoryClean = () => {
   }
 }
 
-export const getCreeps = (creeps: SelfCreeps[], creepRole: String) => {
-  return creeps.filter(creep => creep.memory.role == creepRole)
-}
-
-export const fetchCreeps = () => {
+export const getCreeps = (creepRole: String) => {
   let creeps: SelfCreeps[] = []
   for (const name in Memory.creeps) {
-    creeps.push(Memory.creeps[name] as SelfCreeps)
+    const creep = Memory.creeps[name] as SelfCreeps
+    if (creep.memory.role === creepRole) {
+      creeps.push(Memory.creeps[name] as SelfCreeps)
+    }
   }
   return creeps
 }

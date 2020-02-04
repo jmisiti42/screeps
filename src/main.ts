@@ -1,15 +1,10 @@
 import roleHarvester from './mod.creep.harvester'
-import { fetchCreeps, memoryClean, getCreeps } from './mod.helper'
+import { memoryClean, getCreeps } from './mod.helper'
 import { SelfCreeps } from './types/selfCreeps'
-
-let creeps: SelfCreeps[] = []
 
 export const loop = () => {
   memoryClean()
-  if (creeps.length <= 0) {
-    creeps = fetchCreeps()
-  }
-  const harvesters = getCreeps(creeps, 'harvester') || []
+  const harvesters = getCreeps('harvester') || []
   console.log('Harvesters: ' + harvesters.length);
 
   if(harvesters.length < 2 && !Game.spawns['Spawn1'].spawning) {
