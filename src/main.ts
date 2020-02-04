@@ -3,7 +3,7 @@ import { memoryClean, getCreeps } from './mod.helper'
 
 export const loop = () => {
   memoryClean()
-  const harvesters = getCreeps('harvester')
+  const harvesters = getCreeps('harvester') || []
   console.log('Harvesters: ' + harvesters.length);
 
   if(harvesters.length < 2) {
