@@ -1,23 +1,14 @@
 import roleHarvester from './mod.creep.harvester'
-const _ = {
-    filter: (c: any, cb: Function): any => {
-        return
-    }
-}
+import { memoryClean, getCreeps } from './mod.helper'
+
 export default {
     loop: () => {
-        for(var name in Memory.creeps) {
-            if(!Game.creeps[name]) {
-                delete Memory.creeps[name];
-                console.log('Clearing non-existing creep memory:', name);
-            }
-        }
-
-        const harvesters = _.filter(Game.creeps, (creep: Creep & { memory: { role: string; }}) => creep.memory.role == 'harvester');
+        memoryClean()
+        const harvesters = getCreeps('harvester')
         console.log('Harvesters: ' + harvesters.length);
 
         if(harvesters.length < 2) {
-            var newName = 'Harvester' + Game.time;
+            const newName = 'Harvester' + Game.time;
             console.log('Spawning new harvester: ' + newName);
             Game.spawns['Spawn1'].spawnCreep([WORK,CARRY,MOVE], newName, 
                 {memory: {role: 'harvester'}});
@@ -32,8 +23,8 @@ export default {
                 {align: 'left', opacity: 0.8});
         }
 
-        for(var name in Game.creeps) {
-            var creep = Game.creeps[name] as Creep & { memory: { role: string; } };
+        for (const name in Game.creeps) {
+            const creep = Game.creeps[name] as Creep & { memory: { role: string; } };
             if(creep.memory.role == 'harvester') {
                 roleHarvester.run(creep);
             }
