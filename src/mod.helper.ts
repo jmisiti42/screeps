@@ -1,8 +1,4 @@
-const _ = {
-  filter: (c: any, cb: Function): any => {
-      return
-  }
-}
+import { SelfCreeps } from "./types/selfCreeps";
 
 export const memoryClean = () => {
   for(const name in Memory.creeps) {
@@ -13,6 +9,14 @@ export const memoryClean = () => {
   }
 }
 
-export const getCreeps = (creepRole: String) => {
-  return _.filter(Game.creeps, (creep: Creep & { memory: { role: string; }}) => creep.memory.role == creepRole);
+export const getCreeps = (creeps: SelfCreeps[], creepRole: String) => {
+  return creeps.filter(creep => creep.memory.role == creepRole)
+}
+
+export const fetchCreeps = () => {
+  let creeps: SelfCreeps[] = []
+  for (const name in Memory.creeps) {
+    creeps.push(Memory.creeps[name] as SelfCreeps)
+  }
+  return creeps
 }
