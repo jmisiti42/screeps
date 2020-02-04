@@ -4,22 +4,22 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "grunt screeps default"
+    "start": "grunt screeps default --force",
+    "clean": "npx rimraf dist/*",
+    "build": "npm run clean && echo Using TypeScript && npx tsc --version && npx tsc --pretty"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "config": "^3.2.5",
-    "grunt-screeps": "^1.4.0",
-    "js-beautify": "^1.10.3"
+    "config": "^3.2.5"
   },
   "devDependencies": {
     "@types/screeps": "^3.0.0",
-    "grunt": "^1.0.4",
-    "grunt-contrib-clean": "^2.0.0",
-    "grunt-contrib-copy": "^1.0.0",
-    "grunt-file-append": "0.0.7",
-    "grunt-jsbeautifier": "^0.2.13",
-    "time-grunt": "^2.0.0"
+    "typescript": "^3.7.5",
+    "rimraf": "^2.6.3",
+    "ts-node": "^8.6.2",
+    "tslint": "^5.19.0",
+    "tslint-config-prettier": "^1.18.0",
+    "tslint-no-focused-test": "^0.5.0"
   }
 }
