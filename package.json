@@ -6,7 +6,8 @@
   "scripts": {
     "start": "grunt screeps default --force",
     "clean": "npx rimraf dist/*",
-    "build": "npm run clean && echo Using TypeScript && npx tsc --version && npx tsc --pretty"
+    "build": "npm run clean && echo Using TypeScript && npx tsc --version && npx tsc --pretty --outFile dist/main.js",
+    "push": "npm run build && git add . && git commit -m 'new version pushed' && git push"
   },
   "author": "",
   "license": "ISC",
