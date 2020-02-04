@@ -1,4 +1,4 @@
-import roleHarvester from './modules/creeps/harvester'
+import roleHarvester from './mod.creep.harvester'
 const _ = {
     filter: (c: any, cb: Function): any => {
         return
