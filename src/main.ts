@@ -6,7 +6,7 @@ export const loop = () => {
   const harvesters = getCreeps('harvester') || []
   console.log('Harvesters: ' + harvesters.length);
 
-  if(harvesters.length < 2) {
+  if(harvesters.length < 2 && !Game.spawns['Spawn1'].spawning) {
     const newName = 'Harvester' + Game.time;
     console.log('Spawning new harvester: ' + newName);
     Game.spawns['Spawn1'].spawnCreep(
