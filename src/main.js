@@ -17,7 +17,7 @@ export const loop = () => {
   }
   
   if (Game.spawns['Spawn1'].spawning) { 
-    const spawningCreep = Game.creeps[Game.spawns['Spawn1'].spawning.name] as SelfCreeps
+    const spawningCreep = Game.creeps[Game.spawns['Spawn1'].spawning.name]
     Game.spawns['Spawn1'].room.visual.text(
       '🛠️' + spawningCreep.role,
       Game.spawns['Spawn1'].pos.x + 1, 
@@ -27,7 +27,7 @@ export const loop = () => {
   }
 
   for (const name in Game.creeps) {
-    const creep = Game.creeps[name] as SelfCreeps
+    const creep = Game.creeps[name]
     if (creep.role == 'harvester') {
       roleHarvester.run(creep);
     }

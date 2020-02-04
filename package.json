@@ -2,25 +2,13 @@
   "name": "screeps",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "none",
   "scripts": {
-    "start": "grunt screeps default --force",
-    "clean": "npx rimraf dist/*",
-    "build": "npm run clean && echo Using TypeScript && npx tsc --version && npx tsc --pretty",
-    "push": "npm run build && git add . && git commit -m 'new version pushed' && git push"
+    "push": "git add . && git commit -m 'new version pushed' && git push"
   },
   "author": "",
   "license": "ISC",
-  "dependencies": {
-    "config": "^3.2.5"
-  },
   "devDependencies": {
-    "@types/screeps": "^3.0.0",
-    "typescript": "^3.7.5",
-    "rimraf": "^2.6.3",
-    "ts-node": "^8.6.2",
-    "tslint": "^5.19.0",
-    "tslint-config-prettier": "^1.18.0",
-    "tslint-no-focused-test": "^0.5.0"
+    "@types/screeps": "^3.0.0"
   }
 }
